@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carioca Ice Cream - Central de Atendimento</title>
+  <title>Carioca Ice Cream - Central & Cardápio</title>
   
   <!-- Fonte Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* Reset e Configurações Globais */
+    /* Reset e Globais */
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #fffdf2;
@@ -27,70 +27,73 @@
       overflow-x: hidden;
     }
 
-    /* Container Principal */
     .container {
       width: 100%;
-      max-width: 440px;
+      max-width: 460px;
       background: #ffffff;
       border-radius: 28px;
       box-shadow: 0 12px 35px rgba(255, 193, 7, 0.15);
-      padding: 2.5rem 1.5rem;
+      padding: 2rem 1.2rem;
       box-sizing: border-box;
-      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    /* Logo Flutuante */
+    /* Logo & Flutuação */
     .logo {
-      width: 140px;
+      width: 130px;
       height: auto;
-      margin: 0 auto 1rem auto;
+      margin: 0 auto 0.8rem auto;
       display: block;
       animation: float 4s ease-in-out infinite;
     }
 
-    /* Botão Player de Música */
+    /* Player Mídia */
     .music-btn {
       background: #fffbef;
       border: 1.5px solid #ffe58f;
       color: #d48806;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 20px;
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       cursor: pointer;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       transition: all 0.2s ease;
       font-family: inherit;
-    }
-
-    .music-btn:hover {
-      background: #fff1b8;
-      transform: scale(1.03);
     }
 
     h1 {
       color: #d48806;
       font-weight: 700;
       margin-bottom: 0.2rem;
-      font-size: 1.9rem;
+      font-size: 1.8rem;
       letter-spacing: -0.5px;
     }
 
-    p {
-      margin: 0.4rem 0;
+    p.sub {
+      margin: 0.3rem 0;
       color: #5f5f5f;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    /* Lista de Botões */
+    /* NAVEGAÇÃO ENTRE HUB E CARDÁPIO */
+    .view-section {
+      display: none;
+    }
+    .view-section.active {
+      display: block;
+      animation: fadeInUp 0.4s ease forwards;
+    }
+
+    /* BOTÕES DO HUB */
     .buttons-list {
-      margin-top: 1.5rem;
+      margin-top: 1.2rem;
     }
 
-    a.button {
+    a.button, button.btn-cardapio-open {
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -98,122 +101,174 @@
       color: #111;
       font-weight: 600;
       text-decoration: none;
-      padding: 1.1rem 1.5rem;
+      padding: 1rem 1.3rem;
       border-radius: 16px;
-      margin: 0.9rem 0;
+      margin: 0.8rem 0;
       box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.25s ease;
       width: 100%;
       box-sizing: border-box;
-      opacity: 0;
-      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      border: none;
+      cursor: pointer;
+      font-size: 0.98rem;
+      font-family: inherit;
     }
 
-    /* Delays de Entrada */
-    a.button:nth-child(1) { animation-delay: 0.2s; }
-    a.button:nth-child(2) { animation-delay: 0.3s; }
-    a.button:nth-child(3) { animation-delay: 0.4s; }
-    a.button:nth-child(4) { animation-delay: 0.5s; }
-    a.button:nth-child(5) { animation-delay: 0.6s; }
-
-    /* Destaque no Cardápio */
-    a.button.highlight {
+    button.btn-cardapio-open {
       background: linear-gradient(135deg, #ffc107, #ffb300);
-      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulseHighlight 2.5s infinite 1s;
+      animation: pulseHighlight 2.5s infinite 1s;
     }
 
     span.icon {
-      font-size: 1.3rem;
-      margin-right: 1.1rem;
+      font-size: 1.2rem;
+      margin-right: 1rem;
+      display: flex;
+    }
+
+    a.button:hover, button.btn-cardapio-open:hover {
+      background: #ffb300;
+      transform: translateY(-2px);
+    }
+
+    /* ESTILOS DO CARDÁPIO DIGITAL */
+    .nav-back {
+      background: #f5f5f5;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+      color: #555;
+      cursor: pointer;
+      margin-bottom: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Filtros Rápidos do Cardápio */
+    .menu-filters {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 1.2rem;
+    }
+
+    .filter-btn {
+      background: #fff8e1;
+      border: 1px solid #ffe082;
+      color: #d48806;
+      padding: 0.5rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: #d48806;
+      color: #fff;
+      border-color: #d48806;
+    }
+
+    /* Seção de Categoria e Itens */
+    .category-title {
+      text-align: left;
+      font-size: 1.1rem;
+      color: #d48806;
+      font-weight: 700;
+      margin: 1.5rem 0 0.8rem 0;
       display: flex;
       align-items: center;
+      gap: 6px;
+      border-bottom: 2px solid #fff3c4;
+      padding-bottom: 4px;
     }
 
-    a.button:hover {
-      background: #ffb300;
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 20px rgba(255, 193, 7, 0.35);
+    .badge-nobalance {
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+      margin-left: auto;
     }
 
-    /* Bloco do Wi-Fi */
+    .item-card {
+      background: #fffdf8;
+      border: 1px solid #ffecb3;
+      border-radius: 16px;
+      padding: 0.9rem;
+      margin-bottom: 0.8rem;
+      text-align: left;
+      transition: transform 0.2s ease;
+    }
+
+    .item-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.3rem;
+    }
+
+    .item-title {
+      font-weight: 700;
+      color: #222;
+      font-size: 0.95rem;
+    }
+
+    .item-price {
+      font-weight: 700;
+      color: #d48806;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .item-desc {
+      font-size: 0.82rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    /* Bloco Wi-Fi */
     .wifi-box {
       background: #fffbef;
       border: 2px dashed #ffe58f;
-      padding: 1.2rem;
-      border-radius: 20px;
-      margin-top: 1.8rem;
-      text-align: center;
-      opacity: 0;
-      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
-    }
-
-    .wifi-title {
-      color: #d48806;
-      font-weight: 700;
-      font-size: 1.05rem;
-      margin: 0 0 0.4rem 0;
-    }
-
-    .wifi-network {
-      margin: 0.2rem 0 0.8rem 0;
-      font-size: 0.9rem;
-      color: #444;
+      padding: 1rem;
+      border-radius: 18px;
+      margin-top: 1.5rem;
     }
 
     .wifi-copy-btn {
       background: #ffffff;
       border: 1.5px solid #ffd666;
       color: #d48806;
-      padding: 0.6rem 1.2rem;
-      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
       width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-      font-family: inherit;
+      margin-top: 0.5rem;
     }
 
-    .wifi-copy-btn:hover {
-      background: #fff1b8;
-      transform: scale(1.02);
-    }
-
-    .info {
-      margin-top: 1.8rem;
-      font-size: 0.8rem;
-      color: #888;
-      opacity: 0;
-      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
-    }
+    .info { margin-top: 1.5rem; font-size: 0.78rem; color: #888; }
 
     /* Animações */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-7px); }
-    }
-
-    @keyframes pulseHighlight {
-      0%, 100% { box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); }
-      50% { box-shadow: 0 0 22px rgba(255, 193, 7, 0.75); }
-    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+    @keyframes pulseHighlight { 0%, 100% { box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); } 50% { box-shadow: 0 0 20px rgba(255, 193, 7, 0.7); } }
   </style>
 </head>
 <body>
 
-  <!-- Elemento de Áudio Oculto com Pré-Carregamento -->
   <audio id="bgMusic" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
@@ -221,42 +276,174 @@
   <div class="container">
     <img src="logo.png" alt="Logo da Carioca Ice Cream" class="logo" />
     
-    <!-- Botão Player de Música -->
     <button class="music-btn" onclick="toggleMusica(event)">
-      <span id="musicIcon">🎵</span> <span id="musicText">Tocando música da loja...</span>
+      <span id="musicIcon">🎵</span> <span id="musicText">Ouvir música da loja</span>
     </button>
 
     <h1>Carioca Ice Cream</h1>
-    <p>Sorveteria & Açaiteria</p>
-    <p><strong>Rua Paulo Pires, nº 90, Loja E - Tomás Coelho - RJ</strong></p>
-    <p><strong>Aberto todos os dias:</strong> 13h às 21h</p>
+    <p class="sub">Sorveteria & Açaiteria</p>
 
-    <!-- Lista de Botões -->
-    <div class="buttons-list">
-      <a href="https://convitecesareelen.my.canva.site/cariocaicecream" class="button highlight" target="_blank">
-        <span class="icon">🍨</span> Ver Cardápio
-      </a>
-      <a href="https://www.instagram.com/cariocaicecream?igsh=MXRvYml0YTJ0czlxMg==" class="button" target="_blank">
-        <span class="icon">📸</span> Instagram
-      </a>
-      <a href="https://wa.me/5521977138992" class="button" target="_blank">
-        <span class="icon">💬</span> Fale no WhatsApp
-      </a>
-      <a href="https://g.page/r/CbCnsZL-B3xkEBM/review" class="button" target="_blank">
-        <span class="icon">⭐</span> Avalie no Google
-      </a>
-      <a href="https://www.google.com/maps/search/?api=1&query=Rua+Paulo+Pires,+90,+Loja+E,+Tom%C3%A1s+Coelho,+Rio+de+Janeiro" class="button" target="_blank">
-        <span class="icon">📍</span> Como Chegar
-      </a>
+    <!-- VISTA 1: HUB DE LINKS -->
+    <div id="hubView" class="view-section active">
+      <p class="sub"><strong>Rua Paulo Pires, nº 90, Loja E - Tomás Coelho - RJ</strong></p>
+      <p class="sub"><strong>Aberto todos os dias:</strong> 13h às 21h</p>
+
+      <div class="buttons-list">
+        <button class="btn-cardapio-open" onclick="mostrarCardapio()">
+          <span class="icon">🍨</span> Ver Cardápio Digital
+        </button>
+        <a href="https://www.instagram.com/cariocaicecream?igsh=MXRvYml0YTJ0czlxMg==" class="button" target="_blank">
+          <span class="icon">📸</span> Instagram
+        </a>
+        <a href="https://wa.me/5521977138992" class="button" target="_blank">
+          <span class="icon">💬</span> Fale no WhatsApp
+        </a>
+        <a href="https://g.page/r/CbCnsZL-B3xkEBM/review" class="button" target="_blank">
+          <span class="icon">⭐</span> Avalie no Google
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Rua+Paulo+Pires,+90,+Loja+E,+Tom%C3%A1s+Coelho,+Rio+de+Janeiro" class="button" target="_blank">
+          <span class="icon">📍</span> Como Chegar
+        </a>
+      </div>
+
+      <div class="wifi-box">
+        <div style="color: #d48806; font-weight: 700; font-size: 0.95rem;">📶 Wi-Fi Gratuito da Loja</div>
+        <div style="font-size: 0.85rem; margin: 0.2rem 0;">Rede: <strong>Carioca Ice Cream Cliente 2.4</strong></div>
+        <button class="wifi-copy-btn" id="wifiBtn" onclick="copiarSenha()">
+          📋 Copiar Senha (<strong>sorvete2025</strong>)
+        </button>
+      </div>
     </div>
 
-    <!-- Bloco Wi-Fi Prático -->
-    <div class="wifi-box">
-      <div class="wifi-title">📶 Wi-Fi Gratuito da Loja</div>
-      <div class="wifi-network">Rede: <strong>Carioca Ice Cream Cliente 2.4</strong></div>
-      <button class="wifi-copy-btn" id="wifiBtn" onclick="copiarSenha()">
-        📋 Copiar Senha (<strong>sorvete2025</strong>)
-      </button>
+    <!-- VISTA 2: CARDÁPIO DIGITAL INTERATIVO -->
+    <div id="cardapioView" class="view-section">
+      <button class="nav-back" onclick="mostrarHub()">⬅️ Voltar ao Hub</button>
+
+      <!-- Filtros do Cardápio -->
+      <div class="menu-filters">
+        <button class="filter-btn active" onclick="filtrarCategoria('todas', this)">Tudo</button>
+        <button class="filter-btn" onclick="filtrarCategoria('self', this)">Self-Service</button>
+        <button class="filter-btn" onclick="filtrarCategoria('casquinha', this)">Casquinhas & Cascões</button>
+        <button class="filter-btn" onclick="filtrarCategoria('sundae', this)">Sundaes</button>
+        <button class="filter-btn" onclick="filtrarCategoria('milkshake', this)">Milk Shakes</button>
+      </div>
+
+      <!-- CATEGORIA: SELF-SERVICE SORVETE -->
+      <div class="cat-block cat-self">
+        <div class="category-title">
+          🍦 Self-Service Sorvete
+          <span class="badge-nobalance">Sem Balança</span>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 300ml</span><span class="item-price">R$ 12,00</span></div>
+          <p class="item-desc">Monte do seu jeito na bancada com sorvetes, caldas e coberturas livres!</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 500ml</span><span class="item-price">R$ 15,00</span></div>
+          <p class="item-desc">Tamanho perfeito para matar a vontade com combinação ilimitada de acompanhamentos.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 700ml</span><span class="item-price">R$ 18,00</span></div>
+          <p class="item-desc">Tamanho Mega! Sirva-se à vontade com suas caldas e coberturas favoritas.</p>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: SELF-SERVICE AÇAÍ -->
+      <div class="cat-block cat-self">
+        <div class="category-title">
+          🫐 Self-Service Açaí
+          <span class="badge-nobalance">Sem Balança</span>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 300ml</span><span class="item-price">R$ 9,00</span></div>
+          <p class="item-desc">Açaí cremoso + monte com os acompanhamentos que você desejar.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 500ml</span><span class="item-price">R$ 13,00</span></div>
+          <p class="item-desc">O mais pedido! Açaí super cremoso montado no seu estilo.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 700ml</span><span class="item-price">R$ 16,00</span></div>
+          <p class="item-desc">Para quem ama açaí de verdade. Valor fixo por copo sem surpresas na balança.</p>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: CASQUINHAS E CASCÕES -->
+      <div class="cat-block cat-casquinha">
+        <div class="category-title">🍦 Casquinhas & Cascões</div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Casquinha Tradicional</span><span class="item-price">R$ 4,00</span></div>
+          <p class="item-desc">Crocante e deliciosa. Sabores: Baunilha, Chocolate ou Mista.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Casquinha Recheada / Trufada</span><span class="item-price">R$ 6,00</span></div>
+          <p class="item-desc">Casquinha crocante com recheio especial de Ninho ou Nutella.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Cascão Tradicional</span><span class="item-price">R$ 7,00</span></div>
+          <p class="item-desc">Cascão extra crocante. Sabores: Baunilha, Chocolate ou Mista.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Cascão Recheado / Trufado</span><span class="item-price">R$ 10,00</span></div>
+          <p class="item-desc">Cascão grande com generosa camada interna de Ninho ou Nutella.</p>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: SUNDAES -->
+      <div class="cat-block cat-sundae">
+        <div class="category-title">🍨 Sundaes Especiais</div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Sundae Tradicional</span><span class="item-price">R$ 8,00</span></div>
+          <p class="item-desc">Sorvete cremoso com calda especial. Sabores: Chocolate, Morango ou Maracujá.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Sundae Prime</span><span class="item-price">R$ 10,00</span></div>
+          <p class="item-desc">Combinação especial com coberturas nobres. Sabores: Ninho, Nutella ou Ninho c/ Nutella.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Mega Sundae</span><span class="item-price">R$ 12,00</span></div>
+          <p class="item-desc">Porção reforçada de sorvete e calda. Sabores: Chocolate, Morango ou Maracujá.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Mega Sundae Prime</span><span class="item-price">R$ 14,00</span></div>
+          <p class="item-desc">A experiência máxima em Sundae! Camadas generosas de Ninho, Nutella ou Ninho c/ Nutella.</p>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: MILK SHAKES TRADICIONAIS -->
+      <div class="cat-block cat-milkshake">
+        <div class="category-title">🥤 Milk Shakes Tradicionais</div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Milk Shake 300ml</span><span class="item-price">R$ 12,00</span></div>
+          <p class="item-desc">Ultra cremoso e preparado na hora com os melhores sorvetes da casa.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Milk Shake 500ml</span><span class="item-price">R$ 15,00</span></div>
+          <p class="item-desc">O tamanho ideal para refrescar seu dia com muita cremosidade e sabor.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Milk Shake 700ml</span><span class="item-price">R$ 19,00</span></div>
+          <p class="item-desc">Tamanho generoso! O milkshake perfeito para quem não quer que o sabor acabe rápido.</p>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: MILK SHAKES PRIME -->
+      <div class="cat-block cat-milkshake">
+        <div class="category-title">⭐ Milk Shakes Prime</div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Milk Shake Prime 300ml</span><span class="item-price">R$ 14,00</span></div>
+          <p class="item-desc">Preparo especial com combinações e adicionais nobres incomparáveis.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Milk Shake Prime 500ml</span><span class="item-price">R$ 17,00</span></div>
+          <p class="item-desc">Sabor intenso e textura super aveludada para os paladares mais exigentes.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Milk Shake Prime 700ml</span><span class="item-price">R$ 20,00</span></div>
+          <p class="item-desc">A versão definitiva do nosso Milk Shake! Generoso em tamanho e rico em recheio.</p>
+        </div>
+      </div>
+
     </div>
 
     <!-- Rodapé -->
@@ -266,42 +453,61 @@
   </div>
 
   <script>
+    // Navegação de Telas
+    function mostrarCardapio() {
+      document.getElementById('hubView').classList.remove('active');
+      document.getElementById('cardapioView').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function mostrarHub() {
+      document.getElementById('cardapioView').classList.remove('active');
+      document.getElementById('hubView').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Filtros de Categoria no Cardápio
+    function filtrarCategoria(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const blocos = document.querySelectorAll('.cat-block');
+      blocos.forEach(bloco => {
+        if (cat === 'todas') {
+          bloco.style.display = 'block';
+        } else {
+          bloco.style.display = bloco.classList.contains('cat-' + cat) ? 'block' : 'none';
+        }
+      });
+    }
+
+    // Função de Áudio
     const audio = document.getElementById('bgMusic');
     const icon = document.getElementById('musicIcon');
     const text = document.getElementById('musicText');
     let tocando = false;
 
-    // Função de Play Automático no 1º Toque na tela
     function iniciarMusicaNoToque() {
       if (!tocando) {
         audio.play().then(() => {
           tocando = true;
           icon.innerText = '🔊';
           text.innerText = 'Pausar música';
-          // Remove os ouvintes para não rodar novamente
           document.removeEventListener('click', iniciarMusicaNoToque);
           document.removeEventListener('touchstart', iniciarMusicaNoToque);
-        }).catch(e => {
-          console.log("Aguardando interação do usuário...");
-        });
+        }).catch(e => console.log("Aguardando toque..."));
       }
     }
-
-    // Registra os eventos de toque/clique em qualquer lugar da página
     document.addEventListener('click', iniciarMusicaNoToque);
     document.addEventListener('touchstart', iniciarMusicaNoToque);
 
-    // Botão Manual de Ligar/Desligar
     function toggleMusica(e) {
-      if (e) e.stopPropagation(); // Evita conflito com o evento global
-      
+      if (e) e.stopPropagation();
       if (audio.paused) {
         audio.play().then(() => {
           tocando = true;
           icon.innerText = '🔊';
           text.innerText = 'Pausar música';
-        }).catch(err => {
-          alert("Não foi possível carregar o arquivo 'musica.mp3'. Verifique se o nome do arquivo no GitHub está exatamente em minúsculas.");
         });
       } else {
         audio.pause();
@@ -311,10 +517,9 @@
       }
     }
 
-    // Função para copiar a senha do Wi-Fi
+    // Copiar Wi-Fi
     function copiarSenha() {
-      const senha = "sorvete2025";
-      navigator.clipboard.writeText(senha).then(() => {
+      navigator.clipboard.writeText("sorvete2025").then(() => {
         const btn = document.getElementById("wifiBtn");
         btn.innerHTML = '✅ Senha <strong>sorvete2025</strong> Copiada!';
         btn.style.background = '#d4edda';
