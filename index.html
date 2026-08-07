@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carioca Ice Cream - Central de Atendimento</title>
+  
+  <!-- Fonte Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset e Configurações Globais */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fffdf2;
+      color: #333;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+      overflow-x: hidden;
+    }
+
+    /* Container Principal */
+    .container {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow: 0 12px 35px rgba(255, 193, 7, 0.15);
+      padding: 2.5rem 1.5rem;
+      box-sizing: border-box;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Logo Flutuante */
+    .logo {
+      width: 140px;
+      height: auto;
+      margin: 0 auto 1rem auto;
+      display: block;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* Botão Player de Música */
+    .music-btn {
+      background: #fffbef;
+      border: 1.5px solid #ffe58f;
+      color: #d48806;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-bottom: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .music-btn:hover {
+      background: #fff1b8;
+      transform: scale(1.03);
+    }
+
+    h1 {
+      color: #d48806;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+    }
+
+    p {
+      margin: 0.4rem 0;
+      color: #5f5f5f;
+      font-size: 0.95rem;
+    }
+
+    /* Lista de Botões */
+    .buttons-list {
+      margin-top: 1.5rem;
+    }
+
+    a.button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: #ffc107;
+      color: #111;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1.1rem 1.5rem;
+      border-radius: 16px;
+      margin: 0.9rem 0;
+      box-shadow: 0 4px 10px rgba(255, 193, 7, 0.2);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
+      opacity: 0;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Delays de Entrada */
+    a.button:nth-child(1) { animation-delay: 0.2s; }
+    a.button:nth-child(2) { animation-delay: 0.3s; }
+    a.button:nth-child(3) { animation-delay: 0.4s; }
+    a.button:nth-child(4) { animation-delay: 0.5s; }
+    a.button:nth-child(5) { animation-delay: 0.6s; }
+
+    /* Destaque no Cardápio */
+    a.button.highlight {
+      background: linear-gradient(135deg, #ffc107, #ffb300);
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulseHighlight 2.5s infinite 1s;
+    }
+
+    span.icon {
+      font-size: 1.3rem;
+      margin-right: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    a.button:hover {
+      background: #ffb300;
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(255, 193, 7, 0.35);
+    }
+
+    /* Bloco do Wi-Fi */
+    .wifi-box {
+      background: #fffbef;
+      border: 2px dashed #ffe58f;
+      padding: 1.2rem;
+      border-radius: 20px;
+      margin-top: 1.8rem;
+      text-align: center;
+      opacity: 0;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.7s;
+    }
+
+    .wifi-title {
+      color: #d48806;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin: 0 0 0.4rem 0;
+    }
+
+    .wifi-network {
+      margin: 0.2rem 0 0.8rem 0;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .wifi-copy-btn {
+      background: #ffffff;
+      border: 1.5px solid #ffd666;
+      color: #d48806;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+
+    .wifi-copy-btn:hover {
+      background: #fff1b8;
+      transform: scale(1.02);
+    }
+
+    .info {
+      margin-top: 1.8rem;
+      font-size: 0.8rem;
+      color: #888;
+      opacity: 0;
+      animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.8s;
+    }
+
+    /* Animações */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes pulseHighlight {
+      0%, 100% { box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); }
+      50% { box-shadow: 0 0 22px rgba(255, 193, 7, 0.75); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elemento de Áudio Oculto -->
+  <audio id="bgMusic" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <img src="logo.png" alt="Logo da Carioca Ice Cream" class="logo" />
+    
+    <!-- Botão Player de Música da Loja -->
+    <button class="music-btn" onclick="toggleMusica()">
+      <span id="musicIcon">🎵</span> <span id="musicText">Ouvir música da loja</span>
+    </button>
+
+    <h1>Carioca Ice Cream</h1>
+    <p>Sorveteria & Açaiteria</p>
+    <!-- Endereço Atualizado -->
+    <p><strong>Rua Paulo Pires, nº 90, Loja E - Tomás Coelho - RJ</strong></p>
+    <p><strong>Aberto todos os dias:</strong> 13h às 21h</p>
+
+    <!-- Lista de Botões -->
+    <div class="buttons-list">
+      <a href="https://convitecesareelen.my.canva.site/cariocaicecream" class="button highlight" target="_blank">
+        <span class="icon">🍨</span> Ver Cardápio
+      </a>
+      <a href="https://www.instagram.com/cariocaicecream?igsh=MXRvYml0YTJ0czlxMg==" class="button" target="_blank">
+        <span class="icon">📸</span> Instagram
+      </a>
+      <a href="https://wa.me/5521977138992" class="button" target="_blank">
+        <span class="icon">💬</span> Fale no WhatsApp
+      </a>
+      <a href="https://g.page/r/CbCnsZL-B3xkEBM/review" class="button" target="_blank">
+        <span class="icon">⭐</span> Avalie no Google
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Rua+Paulo+Pires,+90,+Loja+E,+Tom%C3%A1s+Coelho,+Rio+de+Janeiro" class="button" target="_blank">
+        <span class="icon">📍</span> Como Chegar
+      </a>
+    </div>
+
+    <!-- Bloco Wi-Fi Prático -->
+    <div class="wifi-box">
+      <div class="wifi-title">📶 Wi-Fi Gratuito da Loja</div>
+      <div class="wifi-network">Rede: <strong>Carioca Ice Cream Cliente 2.4</strong></div>
+      <button class="wifi-copy-btn" id="wifiBtn" onclick="copiarSenha()">
+        📋 Copiar Senha (<strong>sorvete2025</strong>)
+      </button>
+    </div>
+
+    <!-- Rodapé -->
+    <div class="info">
+      <p>© 2025 Carioca Ice Cream</p>
+    </div>
+  </div>
+
+  <script>
+    // Função para ligar/desligar a música
+    function toggleMusica() {
+      const audio = document.getElementById('bgMusic');
+      const icon = document.getElementById('musicIcon');
+      const text = document.getElementById('musicText');
+
+      if (audio.paused) {
+        audio.play();
+        icon.innerText = '🔊';
+        text.innerText = 'Pausar música';
+      } else {
+        audio.pause();
+        icon.innerText = '🎵';
+        text.innerText = 'Ouvir música da loja';
+      }
+    }
+
+    // Função para copiar a senha do Wi-Fi
+    function copiarSenha() {
+      const senha = "sorvete2025";
+      navigator.clipboard.writeText(senha).then(() => {
+        const btn = document.getElementById("wifiBtn");
+        btn.innerHTML = '✅ Senha <strong>sorvete2025</strong> Copiada!';
+        btn.style.background = '#d4edda';
+        btn.style.borderColor = '#c3e6cb';
+        btn.style.color = '#155724';
+
+        setTimeout(() => {
+          btn.innerHTML = '📋 Copiar Senha (<strong>sorvete2025</strong>)';
+          btn.style.background = '#ffffff';
+          btn.style.borderColor = '#ffd666';
+          btn.style.color = '#d48806';
+        }, 3000);
+      });
+    }
+  </script>
+
+</body>
+</html>
