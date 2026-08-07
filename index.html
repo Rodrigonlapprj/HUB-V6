@@ -88,7 +88,7 @@
       animation: fadeInUp 0.4s ease forwards;
     }
 
-    /* BOTÕES DO HUB */
+    /* BOTÕES DO MENU PRINCIPAL */
     .buttons-list {
       margin-top: 1.2rem;
     }
@@ -132,17 +132,24 @@
 
     /* ESTILOS DO CARDÁPIO DIGITAL */
     .nav-back {
-      background: #f5f5f5;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 12px;
+      background: #fffbef;
+      border: 1.5px solid #ffe58f;
+      padding: 0.6rem 1.2rem;
+      border-radius: 14px;
       font-weight: 600;
-      color: #555;
+      color: #d48806;
       cursor: pointer;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .nav-back:hover {
+      background: #fff1b8;
+      transform: scale(1.02);
     }
 
     /* Filtros Rápidos do Cardápio */
@@ -283,7 +290,7 @@
     <h1>Carioca Ice Cream</h1>
     <p class="sub">Sorveteria & Açaiteria</p>
 
-    <!-- VISTA 1: HUB DE LINKS -->
+    <!-- VISTA 1: MENU PRINCIPAL -->
     <div id="hubView" class="view-section active">
       <p class="sub"><strong>Rua Paulo Pires, nº 90, Loja E - Tomás Coelho - RJ</strong></p>
       <p class="sub"><strong>Aberto todos os dias:</strong> 13h às 21h</p>
@@ -317,7 +324,8 @@
 
     <!-- VISTA 2: CARDÁPIO DIGITAL INTERATIVO -->
     <div id="cardapioView" class="view-section">
-      <button class="nav-back" onclick="mostrarHub()">⬅️ Voltar ao Hub</button>
+      <!-- Botão com Texto Atualizado -->
+      <button class="nav-back" onclick="mostrarHub()">⬅️ Voltar ao Menu Principal</button>
 
       <!-- Filtros do Cardápio -->
       <div class="menu-filters">
@@ -328,27 +336,7 @@
         <button class="filter-btn" onclick="filtrarCategoria('milkshake', this)">Milk Shakes</button>
       </div>
 
-      <!-- CATEGORIA: SELF-SERVICE SORVETE -->
-      <div class="cat-block cat-self">
-        <div class="category-title">
-          🍦 Self-Service Sorvete
-          <span class="badge-nobalance">Sem Balança</span>
-        </div>
-        <div class="item-card">
-          <div class="item-header"><span class="item-title">Copo 300ml</span><span class="item-price">R$ 12,00</span></div>
-          <p class="item-desc">Monte do seu jeito na bancada com sorvetes, caldas e coberturas livres!</p>
-        </div>
-        <div class="item-card">
-          <div class="item-header"><span class="item-title">Copo 500ml</span><span class="item-price">R$ 15,00</span></div>
-          <p class="item-desc">Tamanho perfeito para matar a vontade com combinação ilimitada de acompanhamentos.</p>
-        </div>
-        <div class="item-card">
-          <div class="item-header"><span class="item-title">Copo 700ml</span><span class="item-price">R$ 18,00</span></div>
-          <p class="item-desc">Tamanho Mega! Sirva-se à vontade com suas caldas e coberturas favoritas.</p>
-        </div>
-      </div>
-
-      <!-- CATEGORIA: SELF-SERVICE AÇAÍ -->
+      <!-- 1º LUGAR: SELF-SERVICE AÇAÍ -->
       <div class="cat-block cat-self">
         <div class="category-title">
           🫐 Self-Service Açaí
@@ -365,6 +353,26 @@
         <div class="item-card">
           <div class="item-header"><span class="item-title">Copo 700ml</span><span class="item-price">R$ 16,00</span></div>
           <p class="item-desc">Para quem ama açaí de verdade. Valor fixo por copo sem surpresas na balança.</p>
+        </div>
+      </div>
+
+      <!-- 2º LUGAR: SELF-SERVICE SORVETE -->
+      <div class="cat-block cat-self">
+        <div class="category-title">
+          🍦 Self-Service Sorvete
+          <span class="badge-nobalance">Sem Balança</span>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 300ml</span><span class="item-price">R$ 12,00</span></div>
+          <p class="item-desc">Monte do seu jeito na bancada com sorvetes, caldas e coberturas livres!</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 500ml</span><span class="item-price">R$ 15,00</span></div>
+          <p class="item-desc">Tamanho perfeito para matar a vontade com combinação ilimitada de acompanhamentos.</p>
+        </div>
+        <div class="item-card">
+          <div class="item-header"><span class="item-title">Copo 700ml</span><span class="item-price">R$ 18,00</span></div>
+          <p class="item-desc">Tamanho Mega! Sirva-se à vontade com suas caldas e coberturas favoritas.</p>
         </div>
       </div>
 
