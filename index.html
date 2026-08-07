@@ -213,22 +213,21 @@
 </head>
 <body>
 
-  <!-- Elemento de Áudio Oculto -->
-  <audio id="bgMusic" loop>
+  <!-- Elemento de Áudio Oculto com Pré-Carregamento -->
+  <audio id="bgMusic" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
   <div class="container">
     <img src="logo.png" alt="Logo da Carioca Ice Cream" class="logo" />
     
-    <!-- Botão Player de Música da Loja -->
-    <button class="music-btn" onclick="toggleMusica()">
-      <span id="musicIcon">🎵</span> <span id="musicText">Ouvir música da loja</span>
+    <!-- Botão Player de Música -->
+    <button class="music-btn" onclick="toggleMusica(event)">
+      <span id="musicIcon">🎵</span> <span id="musicText">Tocando música da loja...</span>
     </button>
 
     <h1>Carioca Ice Cream</h1>
     <p>Sorveteria & Açaiteria</p>
-    <!-- Endereço Atualizado -->
     <p><strong>Rua Paulo Pires, nº 90, Loja E - Tomás Coelho - RJ</strong></p>
     <p><strong>Aberto todos os dias:</strong> 13h às 21h</p>
 
@@ -267,18 +266,46 @@
   </div>
 
   <script>
-    // Função para ligar/desligar a música
-    function toggleMusica() {
-      const audio = document.getElementById('bgMusic');
-      const icon = document.getElementById('musicIcon');
-      const text = document.getElementById('musicText');
+    const audio = document.getElementById('bgMusic');
+    const icon = document.getElementById('musicIcon');
+    const text = document.getElementById('musicText');
+    let tocando = false;
 
+    // Função de Play Automático no 1º Toque na tela
+    function iniciarMusicaNoToque() {
+      if (!tocando) {
+        audio.play().then(() => {
+          tocando = true;
+          icon.innerText = '🔊';
+          text.innerText = 'Pausar música';
+          // Remove os ouvintes para não rodar novamente
+          document.removeEventListener('click', iniciarMusicaNoToque);
+          document.removeEventListener('touchstart', iniciarMusicaNoToque);
+        }).catch(e => {
+          console.log("Aguardando interação do usuário...");
+        });
+      }
+    }
+
+    // Registra os eventos de toque/clique em qualquer lugar da página
+    document.addEventListener('click', iniciarMusicaNoToque);
+    document.addEventListener('touchstart', iniciarMusicaNoToque);
+
+    // Botão Manual de Ligar/Desligar
+    function toggleMusica(e) {
+      if (e) e.stopPropagation(); // Evita conflito com o evento global
+      
       if (audio.paused) {
-        audio.play();
-        icon.innerText = '🔊';
-        text.innerText = 'Pausar música';
+        audio.play().then(() => {
+          tocando = true;
+          icon.innerText = '🔊';
+          text.innerText = 'Pausar música';
+        }).catch(err => {
+          alert("Não foi possível carregar o arquivo 'musica.mp3'. Verifique se o nome do arquivo no GitHub está exatamente em minúsculas.");
+        });
       } else {
         audio.pause();
+        tocando = false;
         icon.innerText = '🎵';
         text.innerText = 'Ouvir música da loja';
       }
