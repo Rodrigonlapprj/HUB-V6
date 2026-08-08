@@ -203,7 +203,7 @@
       margin-left: auto;
     }
 
-    /* NOVO LAYOUT: CARD COM FOTO LATERAL (MINIATURA) */
+    /* LAYOUT CARD INDIVIDUAL COM MINIATURA */
     .item-card-row {
       background: #fffdf8;
       border: 1px solid #ffecb3;
@@ -354,52 +354,11 @@
       <!-- Filtros do Cardápio -->
       <div class="menu-filters">
         <button class="filter-btn active" onclick="filtrarCategoria('todas', this)">Tudo</button>
-        <button class="filter-btn" onclick="filtrarCategoria('casquinha', this)">Casquinhas & Cascões</button>
         <button class="filter-btn" onclick="filtrarCategoria('self', this)">Self-Service</button>
+        <button class="filter-btn" onclick="filtrarCategoria('casquinha', this)">Casquinhas & Cascões</button>
         <button class="filter-btn" onclick="filtrarCategoria('sundae', this)">Sundaes</button>
         <button class="filter-btn" onclick="filtrarCategoria('milkshake', this)">Milk Shakes</button>
         <button class="filter-btn" onclick="filtrarCategoria('potes', this)">Potes 1L</button>
-      </div>
-
-      <!-- TESTE DE ANCORAGEM: CASQUINHAS & CASCÕES COM FOTO INDIVIDUAL -->
-      <div class="cat-block cat-casquinha">
-        <div class="category-title">🍦 Casquinhas & Cascões</div>
-        
-        <!-- ITEM 1 -->
-        <div class="item-card-row">
-          <img src="casquinha.jpg" alt="Casquinha Tradicional" class="item-thumb" />
-          <div class="item-info">
-            <div class="item-header"><span class="item-title">Casquinha Tradicional</span><span class="item-price">R$ 4,00</span></div>
-            <p class="item-desc">Crocante e deliciosa. Baunilha, Chocolate ou Mista.</p>
-          </div>
-        </div>
-
-        <!-- ITEM 2 (UPGRADE TRUFADO) -->
-        <div class="item-card-row">
-          <img src="https://images.unsplash.com/photo-1549395156-e0c1fe6fc7a5?w=200&auto=format&fit=crop&q=80" alt="Casquinha Recheada" class="item-thumb" />
-          <div class="item-info">
-            <div class="item-header"><span class="item-title">Casquinha Trufada</span><span class="item-price">R$ 6,00</span></div>
-            <p class="item-desc">Casquinha crocante com recheio interno de Ninho ou Nutella.</p>
-          </div>
-        </div>
-
-        <!-- ITEM 3 -->
-        <div class="item-card-row">
-          <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=200&auto=format&fit=crop&q=80" alt="Cascão Tradicional" class="item-thumb" />
-          <div class="item-info">
-            <div class="item-header"><span class="item-title">Cascão Tradicional</span><span class="item-price">R$ 7,00</span></div>
-            <p class="item-desc">Cascão extra crocante e generoso em tamanho.</p>
-          </div>
-        </div>
-
-        <!-- ITEM 4 (UPGRADE CASCÃO TRUFADO) -->
-        <div class="item-card-row">
-          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&auto=format&fit=crop&q=80" alt="Cascão Recheado" class="item-thumb" />
-          <div class="item-info">
-            <div class="item-header"><span class="item-title">Cascão Trufado</span><span class="item-price">R$ 10,00</span></div>
-            <p class="item-desc">Cascão grande com abundante camada interna de Ninho ou Nutella.</p>
-          </div>
-        </div>
       </div>
 
       <!-- 1º LUGAR: SELF-SERVICE AÇAÍ -->
@@ -411,43 +370,188 @@
         <div class="item-card-row">
           <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200&auto=format&fit=crop&q=80" alt="Açaí 300ml" class="item-thumb" />
           <div class="item-info">
-            <div class="item-header"><span class="item-title">Copo 300ml</span><span class="item-price">R$ 9,00</span></div>
-            <p class="item-desc">Açaí cremoso! Monte com +15 complementos e +20 caldas.</p>
+            <div class="item-header"><span class="item-title">Açaí Copo 300ml</span><span class="item-price">R$ 9,00</span></div>
+            <p class="item-desc">Açaí super cremoso! Monte do seu jeito com +15 complementos e +20 caldas liberadas.</p>
           </div>
         </div>
         <div class="item-card-row">
           <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200&auto=format&fit=crop&q=80" alt="Açaí 500ml" class="item-thumb" />
           <div class="item-info">
-            <div class="item-header"><span class="item-title">Copo 500ml</span><span class="item-price">R$ 13,00</span></div>
-            <p class="item-desc">O mais pedido! Açaí cremoso + liberdade total de acompanhamentos.</p>
+            <div class="item-header"><span class="item-title">Açaí Copo 500ml</span><span class="item-price">R$ 13,00</span></div>
+            <p class="item-desc">O tamanho mais pedido! Açaí cremoso + liberdade total para combinar acompanhamentos.</p>
           </div>
         </div>
         <div class="item-card-row">
           <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200&auto=format&fit=crop&q=80" alt="Açaí 700ml" class="item-thumb" />
           <div class="item-info">
-            <div class="item-header"><span class="item-title">Copo 700ml</span><span class="item-price">R$ 16,00</span></div>
-            <p class="item-desc">Tamanho Mega! Sirva-se à vontade sem surpresas na balança.</p>
+            <div class="item-header"><span class="item-title">Açaí Copo 700ml</span><span class="item-price">R$ 16,00</span></div>
+            <p class="item-desc">Tamanho Mega para apaixonados por açaí! Sirva-se à vontade com valor fixo.</p>
           </div>
         </div>
       </div>
 
-      <!-- MILK SHAKES TRADICIONAIS & PRIME -->
+      <!-- 2º LUGAR: SELF-SERVICE SORVETE -->
+      <div class="cat-block cat-self">
+        <div class="category-title">
+          🍦 Self-Service Sorvete
+          <span class="badge-nobalance">Sem Balança</span>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&auto=format&fit=crop&q=80" alt="Sorvete 300ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Sorvete Copo 300ml</span><span class="item-price">R$ 12,00</span></div>
+            <p class="item-desc">Mais de 20 sabores à sua escolha! Sirva-se com acompanhamentos e caldas ilimitadas.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&auto=format&fit=crop&q=80" alt="Sorvete 500ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Sorvete Copo 500ml</span><span class="item-price">R$ 15,00</span></div>
+            <p class="item-desc">Combine seus sabores favoritos de sorvete com caldas quentes e coberturas crocantes.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&auto=format&fit=crop&q=80" alt="Sorvete 700ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Sorvete Copo 700ml</span><span class="item-price">R$ 18,00</span></div>
+            <p class="item-desc">Experiência completa! Monte grandes camadas de sabores sem se preocupar com peso.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: CASQUINHAS & CASCÕES -->
+      <div class="cat-block cat-casquinha">
+        <div class="category-title">🍦 Casquinhas & Cascões</div>
+        <div class="item-card-row">
+          <img src="casquinha.jpg" alt="Casquinha Tradicional" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Casquinha Tradicional</span><span class="item-price">R$ 4,00</span></div>
+            <p class="item-desc">Crocante e deliciosa. Sabores: Baunilha, Chocolate ou Mista.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1549395156-e0c1fe6fc7a5?w=200&auto=format&fit=crop&q=80" alt="Casquinha Trufada" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Casquinha Trufada</span><span class="item-price">R$ 6,00</span></div>
+            <p class="item-desc">Casquinha crocante com recheio interno de Ninho ou Nutella.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=200&auto=format&fit=crop&q=80" alt="Cascão Tradicional" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Cascão Tradicional</span><span class="item-price">R$ 7,00</span></div>
+            <p class="item-desc">Cascão extra crocante e generoso. Baunilha, Chocolate ou Mista.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=200&auto=format&fit=crop&q=80" alt="Cascão Trufado" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Cascão Trufado</span><span class="item-price">R$ 10,00</span></div>
+            <p class="item-desc">Cascão grande com generosa camada interna de Ninho ou Nutella.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: SUNDAES ESPECIAIS -->
+      <div class="cat-block cat-sundae">
+        <div class="category-title">🍨 Sundaes Especiais</div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&auto=format&fit=crop&q=80" alt="Sundae Tradicional" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Sundae Tradicional</span><span class="item-price">R$ 8,00</span></div>
+            <p class="item-desc">Sorvete cremoso com calda especial. Chocolate, Morango ou Maracujá.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&auto=format&fit=crop&q=80" alt="Sundae Prime" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Sundae Prime</span><span class="item-price">R$ 10,00</span></div>
+            <p class="item-desc">Coberturas nobres! Ninho, Nutella ou Ninho c/ Nutella.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&auto=format&fit=crop&q=80" alt="Mega Sundae" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Mega Sundae</span><span class="item-price">R$ 12,00</span></div>
+            <p class="item-desc">Porção reforçada de sorvete. Chocolate, Morango ou Maracujá.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&auto=format&fit=crop&q=80" alt="Mega Sundae Prime" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Mega Sundae Prime</span><span class="item-price">R$ 14,00</span></div>
+            <p class="item-desc">A experiência máxima em Sundae! Camadas nobres de Ninho ou Nutella.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: MILK SHAKES TRADICIONAIS -->
       <div class="cat-block cat-milkshake">
         <div class="category-title">🥤 Milk Shakes Tradicionais</div>
         <div class="item-card-row">
-          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake" class="item-thumb" />
+          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake 300ml" class="item-thumb" />
           <div class="item-info">
-            <div class="item-header"><span class="item-title">Tradicional (300/500/700ml)</span><span class="item-price">A partir de R$ 12</span></div>
-            <p class="item-desc">300ml (R$12) | 500ml (R$15) | 700ml (R$19). Ultra cremoso!</p>
+            <div class="item-header"><span class="item-title">Milk Shake 300ml</span><span class="item-price">R$ 12,00</span></div>
+            <p class="item-desc">Ultra cremoso e preparado na hora com os melhores sorvetes da casa.</p>
           </div>
         </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake 500ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Milk Shake 500ml</span><span class="item-price">R$ 15,00</span></div>
+            <p class="item-desc">O tamanho ideal para refrescar seu dia com muita cremosidade e sabor.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake 700ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Milk Shake 700ml</span><span class="item-price">R$ 19,00</span></div>
+            <p class="item-desc">Tamanho generoso! O milkshake perfeito para durar mais tempo.</p>
+          </div>
+        </div>
+      </div>
 
+      <!-- CATEGORIA: MILK SHAKES PRIME -->
+      <div class="cat-block cat-milkshake">
         <div class="category-title">⭐ Milk Shakes Prime</div>
         <div class="item-card-row">
-          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake Prime" class="item-thumb" />
+          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake Prime 300ml" class="item-thumb" />
           <div class="item-info">
-            <div class="item-header"><span class="item-title">Prime (300/500/700ml)</span><span class="item-price">A partir de R$ 14</span></div>
-            <p class="item-desc">300ml (R$14) | 500ml (R$17) | 700ml (R$20). Recheio e adicionais nobres!</p>
+            <div class="item-header"><span class="item-title">Milk Shake Prime 300ml</span><span class="item-price">R$ 14,00</span></div>
+            <p class="item-desc">Preparo especial com combinações e adicionais nobres incomparáveis.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake Prime 500ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Milk Shake Prime 500ml</span><span class="item-price">R$ 17,00</span></div>
+            <p class="item-desc">Sabor intenso e textura aveludada para os paladares mais exigentes.</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=200&auto=format&fit=crop&q=80" alt="Milk Shake Prime 700ml" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Milk Shake Prime 700ml</span><span class="item-price">R$ 20,00</span></div>
+            <p class="item-desc">A versão definitiva! Generoso em tamanho e rico em recheios nobres.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORIA: POTES PARA LEVAR -->
+      <div class="cat-block cat-potes">
+        <div class="category-title">🍨 Potes para Levar (1 Litro)</div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=200&auto=format&fit=crop&q=80" alt="Pote Sorvete 1L" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Pote de Sorvete 1L</span><span class="item-price">R$ 20,00</span></div>
+            <p class="item-desc">Leve a cremosidade do sorvete Carioca Ice Cream para saborear em casa!</p>
+          </div>
+        </div>
+        <div class="item-card-row">
+          <img src="https://images.unsplash.com/photo-1590301157890-4810ed352733?w=200&auto=format&fit=crop&q=80" alt="Pote Açaí 1L" class="item-thumb" />
+          <div class="item-info">
+            <div class="item-header"><span class="item-title">Pote de Açaí 1L</span><span class="item-price">R$ 25,00</span></div>
+            <p class="item-desc">Açaí ultra cremoso em embalagem de 1 Litro para ter sempre por perto.</p>
           </div>
         </div>
       </div>
