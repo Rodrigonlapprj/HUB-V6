@@ -257,13 +257,18 @@
       background: #ffffff;
       border: 1.5px solid #ffd666;
       color: #d48806;
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1rem;
       border-radius: 10px;
       font-weight: 600;
       font-size: 0.85rem;
       cursor: pointer;
       width: 100%;
       margin-top: 0.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .wifi-copy-btn:hover {
+      background: #fff1b8;
     }
 
     .info { margin-top: 1.5rem; font-size: 0.78rem; color: #888; }
@@ -317,7 +322,7 @@
         <div style="color: #d48806; font-weight: 700; font-size: 0.95rem;">📶 Wi-Fi Gratuito da Loja</div>
         <div style="font-size: 0.85rem; margin: 0.2rem 0;">Rede: <strong>Carioca Ice Cream Cliente 2.4</strong></div>
         <button class="wifi-copy-btn" id="wifiBtn" onclick="copiarSenha()">
-          📋 Copiar Senha (<strong>sorvete2025</strong>)
+          📋 Copiar Senha do Wi-Fi
         </button>
       </div>
     </div>
@@ -538,17 +543,18 @@
       }
     }
 
-    // Copiar Wi-Fi
+    // Copiar Wi-Fi (Revela a senha brevemente ao copiar)
     function copiarSenha() {
-      navigator.clipboard.writeText("sorvete2025").then(() => {
+      const senha = "sorvete2025";
+      navigator.clipboard.writeText(senha).then(() => {
         const btn = document.getElementById("wifiBtn");
-        btn.innerHTML = '✅ Senha <strong>sorvete2025</strong> Copiada!';
+        btn.innerHTML = '✅ Senha (<strong>sorvete2025</strong>) Copiada!';
         btn.style.background = '#d4edda';
         btn.style.borderColor = '#c3e6cb';
         btn.style.color = '#155724';
 
         setTimeout(() => {
-          btn.innerHTML = '📋 Copiar Senha (<strong>sorvete2025</strong>)';
+          btn.innerHTML = '📋 Copiar Senha do Wi-Fi';
           btn.style.background = '#ffffff';
           btn.style.borderColor = '#ffd666';
           btn.style.color = '#d48806';
